@@ -1,0 +1,288 @@
+/* Importación de fuentes y estilos generales */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+:root {
+    --dark-bg-color: #121212;
+    --neon-orange: #ff6e40;
+    --text-light: #ffffff;
+    --text-dark: #cccccc;
+    --link-color: #ffffff;
+    --hover-link-color: var(--neon-orange);
+    --button-bg: var(--neon-orange);
+    --button-hover-bg: #e65100;
+}
+
+/* Estilos base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--dark-bg-color);
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* Encabezado y navegación */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(5px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 2px solid var(--neon-orange);
+}
+
+.logo h1 {
+    font-weight: 700;
+    color: var(--neon-orange);
+    text-shadow: 0 0 5px white, 0 0 10px white;
+    font-size: 1.5rem;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+}
+
+.nav-menu li {
+    margin-left: 20px;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: var(--link-color);
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--hover-link-color);
+}
+
+/* Sombreado de neón */
+.neon-shadow {
+    border: 2px solid var(--neon-orange);
+    box-shadow: 0 0 10px var(--neon-orange), 0 0 20px var(--neon-orange), 0 0 30px var(--neon-orange);
+    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.neon-shadow:hover {
+    box-shadow: 0 0 20px var(--neon-orange), 0 0 40px var(--neon-orange), 0 0 60px var(--neon-orange);
+    transform: scale(1.02);
+}
+
+/* Contenido principal */
+.main-content {
+    padding: 2rem 5%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--neon-orange);
+    text-shadow: 0 0 5px var(--neon-orange);
+    margin-bottom: 2rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 5rem 0;
+}
+
+.hero-container {
+    padding: 2rem;
+    border-radius: 15px;
+    background-color: rgba(30, 30, 30, 0.7);
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--neon-orange);
+    text-shadow: 0 0 5px var(--neon-orange);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+/* Botón de pedido con animación */
+.order-button {
+    font-size: 1.2rem;
+    padding: 15px 30px;
+    background-color: var(--button-bg);
+    color: var(--text-light);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    position: relative;
+    overflow: hidden;
+}
+
+.order-button:hover {
+    background-color: var(--button-hover-bg);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.order-button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.order-button:hover::after {
+    animation: button-ripple 0.8s ease-out forwards;
+}
+
+@keyframes button-ripple {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+    }
+}
+
+/* Sección de menú */
+.menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.menu-item {
+    width: 300px;
+    padding: 1.5rem;
+    border-radius: 15px;
+    background-color: rgba(30, 30, 30, 0.7);
+    text-align: center;
+}
+
+.menu-item h3 {
+    color: var(--neon-orange);
+    margin-bottom: 0.5rem;
+}
+
+.menu-item p {
+    color: var(--text-dark);
+}
+
+/* Pie de página */
+.footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(18, 18, 18, 0.8);
+    border-top: 1px solid var(--neon-orange);
+    margin-top: 2rem;
+}
+
+/* Media Queries para diseño móvil */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+
+    .hero h2 {
+        font-size: 2rem;
+    }
+
+    .menu-item {
+        width: 100%;
+    }
+}
+
+/* Estilo para el logo */
+.logo-img {
+    height: 60px; /* Ajusta este valor si necesitas que el logo sea más grande o pequeño */
+    width: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.logo-img:hover {
+    transform: scale(1.1); /* Efecto para que el logo se agrande un poco al pasar el mouse */
+}
+
+/* Estilos para la sección "Sobre nosotros" */
+.about-us-section {
+    padding: 2rem 5%;
+    text-align: center;
+}
+
+.about-us-container {
+    padding: 2rem;
+    border-radius: 15px;
+    background-color: rgba(30, 30, 30, 0.7);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.about-us-container p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+/* Estilos para la sección de Organigrama */
+.organigrama-section {
+    margin-top: 3rem;
+}
+
+.section-subtitle {
+    font-size: 2rem;
+    color: var(--neon-orange);
+    text-shadow: 0 0 5px var(--neon-orange);
+    margin-bottom: 1rem;
+}
+
+.organigrama-img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    margin: 2rem auto 0;
+    border-radius: 10px;
+}
